@@ -1,20 +1,24 @@
 {
-  "name": "philly-theater-database",
+  "name": "philly-theater-database-server",
   "version": "1.0.0",
   "description": "Automatically crawls the websites of Philly-area theaters to corral data about production history, award history, and demographic information over time",
-  "main": "server.js",
+  "main": "server.ts",
   "author": "Joshua McLucas",
   "license": "ISC",
   "dependencies": {
     "apollo-server-express": "^2.9.16",
     "cors": "^2.8.5",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "graphql-tag": "^2.10.1"
   },
   "devDependencies": {
-    "nodemon": "^2.0.2"
+    "graphql": "^14.5.8",
+    "nodemon": "^2.0.2",
+    "ts-node": "^8.6.2",
+    "typescript": "^3.7.5"
   },
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "nodemon server.ts"
   },
   "repository": {
     "type": "git",

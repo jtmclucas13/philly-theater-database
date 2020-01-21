@@ -1,41 +1,30 @@
-const express = require('express');
-const { ApolloServer, gql } = require('apollo-server-express');
-const cors = require('cors');
+import express from 'express';
+import { ApolloServer } from 'apollo-server-express';
+import cors from 'cors';
+import { Resolvers } from './gen-types'
+import { schema } from './schema';
 
 let theaters = [
     {
-        id: 0,
+        id: '0',
         artisticDirector: 'Blanka Zizka',
         active: true,
     }
 ];
 
-const typeDefs = gql`
-    type Theater {
-        id: String
-        artisticDirector: String
-        active: Boolean
-    }
-    type Query {
-        theaters: [Theater]!
-    }
-    type Mutation {
-        createTheater(artisticDirector: String!, active: Boolean):String
-        deleteTheater(id: String!):String
-    }
-`;
-
-const resolvers = {
+const resolvers: Resolvers = {
     Query: {
         theaters: () => theaters,
     },
     Mutation: {
         createTheater: (parent, args, context, info) => {
-            return theaters.push({
-                id: Date.now().toString(),
+            const newId = Date.now().toString(); 
+            theaters.push({
+                id: newId,
                 artisticDirector: args.artisticDirector,
-                active: args.active,
+                active: !!args.active,
             });
+            return newId;
         },
         deleteTheater: (parent, args, context, info) => {
             const indexToRemove = theaters.findIndex(theater => theater.id === args.id);
@@ -45,7 +34,7 @@ const resolvers = {
     }
 }
 
-const server = new ApolloServer({ typeDefs, resolvers });
+const server = new ApolloServer({ typeDefs: schema, resolvers: resolvers as any });
 
 const app = express();
 server.applyMiddleware({ app });

@@ -1,0 +1,28 @@
+{
+    "name": "philly-theater-database",
+    "version": "1.0.0",
+    "description": "Automatically crawls the websites of Philly-area theaters to corral data about production history, award history, and demographic information over time",
+    "main": "index.js",
+    "author": "Joshua McLucas",
+    "license": "ISC",
+    "devDependencies": {
+        "@graphql-codegen/cli": "^1.11.2",
+        "@graphql-codegen/introspection": "^1.11.2",
+        "@graphql-codegen/typescript": "^1.11.2",
+        "@graphql-codegen/typescript-operations": "^1.11.2",
+        "@graphql-codegen/typescript-react-apollo": "^1.11.2",
+        "@graphql-codegen/typescript-resolvers": "^1.11.2",
+        "graphql": "^14.5.8"
+    },
+    "scripts": {
+        "generate-types": "graphql-codegen --config codegen.yml"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/jtmclucas13/philly-theater-database.git"
+    },
+    "bugs": {
+        "url": "https://github.com/jtmclucas13/philly-theater-database/issues"
+    },
+    "homepage": "https://github.com/jtmclucas13/philly-theater-database#readme"
+}

@@ -1,0 +1,16 @@
+overwrite: true
+schema: "./server/schema.ts"
+generates:
+  ./server/gen-types.tsx:
+    plugins:
+      - "typescript"
+      - "typescript-resolvers"
+  ./server/graphql.schema.json:
+    plugins:
+      - "introspection"
+  ./client/src/gen-types.tsx:
+    plugins:
+      - "typescript"
+      - "typescript-operations"
+      - "typescript-react-apollo"
+    

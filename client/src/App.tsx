@@ -1,17 +1,8 @@
 import React, { useState } from 'react';
-import './App.css';
 import { useQuery, useMutation } from '@apollo/react-hooks';
 import gql from "graphql-tag";
-
-interface Theater {
-  id: string;
-  artisticDirector: string;
-  active: boolean;
-}
-
-interface TheaterData {
-  theaters: Theater[];
-}
+import { MutationCreateTheaterArgs, MutationDeleteTheaterArgs, Query, Theater } from './gen-types';
+import './App.css';
 
 const READ_THEATERS = gql`
   query theaters {
@@ -36,9 +27,9 @@ const DELETE_THEATER = gql`
 `;
 
 const App: React.FC = () => {
-  const { data, loading, error } = useQuery<TheaterData>(READ_THEATERS);
-  const [createTheater] = useMutation<{createTheater: Theater}>(CREATE_THEATER);
-  const [deleteTheater] = useMutation<{ deleteTheater: Theater}>(DELETE_THEATER);
+  const { data, loading, error } = useQuery<Query>(READ_THEATERS);
+  const [createTheater] = useMutation<MutationCreateTheaterArgs>(CREATE_THEATER);
+  const [deleteTheater] = useMutation<MutationDeleteTheaterArgs>(DELETE_THEATER);
   const [artisticDirector, setArtisticDirector] = useState<string>('');
 
   if (loading) return <p>loading...</p>;
