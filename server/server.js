@@ -21,7 +21,7 @@ const typeDefs = gql`
     }
     type Mutation {
         createTheater(artisticDirector: String!, active: Boolean):String
-        removeTheater(id: String!):String
+        deleteTheater(id: String!):String
     }
 `;
 
@@ -37,7 +37,7 @@ const resolvers = {
                 active: args.active,
             });
         },
-        removeTheater: (parent, args, context, info) => {
+        deleteTheater: (parent, args, context, info) => {
             const indexToRemove = theaters.findIndex(theater => theater.id === args.id);
             theaters.splice(indexToRemove, 1);
             return args.id;
