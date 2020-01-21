@@ -1,0 +1,27 @@
+{
+  "name": "philly-theater-database",
+  "version": "1.0.0",
+  "description": "Automatically crawls the websites of Philly-area theaters to corral data about production history, award history, and demographic information over time",
+  "main": "server.js",
+  "author": "Joshua McLucas",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-server-express": "^2.9.16",
+    "cors": "^2.8.5",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  },
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jtmclucas13/philly-theater-database.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jtmclucas13/philly-theater-database/issues"
+  },
+  "homepage": "https://github.com/jtmclucas13/philly-theater-database#readme"
+}
