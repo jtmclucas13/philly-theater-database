@@ -12,10 +12,15 @@
         "@graphql-codegen/typescript-operations": "^1.11.2",
         "@graphql-codegen/typescript-react-apollo": "^1.11.2",
         "@graphql-codegen/typescript-resolvers": "^1.11.2",
-        "graphql": "^14.5.8"
+        "graphql": "^14.5.8",
+        "npm-watch": "^0.6.0"
     },
     "scripts": {
-        "generate-types": "graphql-codegen --config codegen.yml"
+        "generate-types": "graphql-codegen --config codegen.yml",
+        "watch": "npm-watch generate-types"
+    },
+    "watch": {
+        "generate-types": "./server/schema.ts"
     },
     "repository": {
         "type": "git",

@@ -37,6 +37,7 @@ export type Theater = {
   id: Scalars['String'],
   artisticDirector?: Maybe<Scalars['String']>,
   active?: Maybe<Scalars['Boolean']>,
+  yearFounded?: Maybe<Scalars['Int']>,
 };
 
 
@@ -114,6 +115,7 @@ export type ResolversTypes = {
   Theater: ResolverTypeWrapper<Theater>,
   String: ResolverTypeWrapper<Scalars['String']>,
   Boolean: ResolverTypeWrapper<Scalars['Boolean']>,
+  Int: ResolverTypeWrapper<Scalars['Int']>,
   Mutation: ResolverTypeWrapper<{}>,
 };
 
@@ -123,6 +125,7 @@ export type ResolversParentTypes = {
   Theater: Theater,
   String: Scalars['String'],
   Boolean: Scalars['Boolean'],
+  Int: Scalars['Int'],
   Mutation: {},
 };
 
@@ -139,6 +142,7 @@ export type TheaterResolvers<ContextType = any, ParentType extends ResolversPare
   id?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
   artisticDirector?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
   active?: Resolver<Maybe<ResolversTypes['Boolean']>, ParentType, ContextType>,
+  yearFounded?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>,
 };
 
 export type Resolvers<ContextType = any> = {

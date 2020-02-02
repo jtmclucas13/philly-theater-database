@@ -36,6 +36,7 @@ export type Theater = {
   id: Scalars['String'],
   artisticDirector?: Maybe<Scalars['String']>,
   active?: Maybe<Scalars['Boolean']>,
+  yearFounded?: Maybe<Scalars['Int']>,
 };
 
 

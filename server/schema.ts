@@ -5,6 +5,7 @@ export const schema = gql`
         id: String!
         artisticDirector: String
         active: Boolean
+        yearFounded: Int
     }
     type Query {
         theaters: [Theater!]!
