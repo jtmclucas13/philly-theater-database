@@ -13,7 +13,10 @@
         "@graphql-codegen/typescript-react-apollo": "^1.11.2",
         "@graphql-codegen/typescript-resolvers": "^1.11.2",
         "graphql": "^14.5.8",
-        "npm-watch": "^0.6.0"
+        "husky": "^4.2.1",
+        "lint-staged": "^10.0.7",
+        "npm-watch": "^0.6.0",
+        "prettier": "1.19.1"
     },
     "scripts": {
         "generate-types": "graphql-codegen --config codegen.yml",
@@ -29,5 +32,13 @@
     "bugs": {
         "url": "https://github.com/jtmclucas13/philly-theater-database/issues"
     },
-    "homepage": "https://github.com/jtmclucas13/philly-theater-database#readme"
+    "homepage": "https://github.com/jtmclucas13/philly-theater-database#readme",
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
+        }
+    },
+    "lint-staged": {
+        "*.{js,css,md}": "prettier --write"
+    }
 }

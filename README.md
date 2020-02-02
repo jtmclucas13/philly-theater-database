@@ -4,10 +4,9 @@ Automatically crawls the websites of Philly-area theaters to corral data about p
 
 ## TODO
 
-1. Can we watch the schema file and automatically run the codegen script?
-2. Implement Prettier
-3. Should I be using lerna?
-4. Remove unneeded CRA cruft
-5. Implement a relational database (Postgres) for this simple example
-6. Host this!
-7. Come up with models/schema for theaters, artists, productions, etc.
+1. Implement Prettier
+2. Should I be using lerna?
+3. Remove unneeded CRA cruft
+4. Implement a relational database (Postgres) for this simple example
+5. Host this!
+6. Come up with models/schema for theaters, artists, productions, etc.
