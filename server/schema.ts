@@ -7,6 +7,14 @@ export const schema = gql`
     active: Boolean
     yearFounded: Int
   }
+  type Artist {
+    id: String!
+    firstName: String
+    lastName: String
+    preferredName: String
+    profession: String
+    associatedOrganizations: [Theater] //JTM LEFT OFF HERE - adding foreign/primary keys to db for artists table
+  }
   type Query {
     theaters: [Theater!]!
   }

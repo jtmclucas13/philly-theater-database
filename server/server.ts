@@ -1,37 +1,43 @@
 import express from "express";
 import { ApolloServer } from "apollo-server-express";
+import { db } from "./pgAdaptor";
 import cors from "cors";
 import { Resolvers } from "./gen-types";
 import { schema } from "./schema";
 
-let theaters = [
-  {
-    id: "0",
-    artisticDirector: "Blanka Zizka",
-    active: true
-  }
-];
-
 const resolvers: Resolvers = {
   Query: {
-    theaters: () => theaters
+    theaters: () => {
+      const query = "SELECT * FROM theaters";
+      return db
+        .many(query)
+        .then(res =>
+          res.map(dbObject => ({
+            ...dbObject,
+            artisticDirector: dbObject.artisticdirector
+          }))
+        )
+        .catch(err => err);
+    }
   },
   Mutation: {
     createTheater: (parent, args, context, info) => {
-      const newId = Date.now().toString();
-      theaters.push({
-        id: newId,
-        artisticDirector: args.artisticDirector,
-        active: !!args.active
-      });
-      return newId;
+      const query =
+        "INSERT INTO theaters(artisticdirector, active, yearfounded) VALUES ($1, $2, 2019) RETURNING id";
+      const values = [args.artisticDirector, args.active];
+
+      return db
+        .one(query, values)
+        .then(res => res)
+        .catch(err => err);
     },
     deleteTheater: (parent, args, context, info) => {
-      const indexToRemove = theaters.findIndex(
-        theater => theater.id === args.id
-      );
-      theaters.splice(indexToRemove, 1);
-      return args.id;
+      const query = "DELETE FROM theaters WHERE id=$1 RETURNING id";
+      const values = [args.id];
+      return db
+        .one(query, values)
+        .then(res => res)
+        .catch(err => err);
     }
   }
 };
